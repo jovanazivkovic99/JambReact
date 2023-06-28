@@ -1,0 +1,65 @@
+.upload-button-container {
+  display: flex;
+  align-items: center; /* Add this line */
+  justify-content: center;
+  flex-wrap: nowrap;
+  margin-bottom: 5px;
+  font-family: "Popins", sans-serif;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.upload-button,
+.file-input-label {
+  display: inline-block;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: rgba(170, 150, 218, 1);
+  text-align: center;
+  padding: 10px 15px;
+  letter-spacing: 1.5px;
+  user-select: none;
+  cursor: pointer;
+  box-shadow: 5px 15px 25px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  margin-right: 10px;
+  margin-top: 30px;
+  border: none;
+  flex-basis: 120px;
+  font-size: 0.8em; /* Make the font size the same */
+  font-weight: 400; /* Make the font weight the same */
+  width: 120px;  /* adjust as needed */
+  margin: 0;
+ 
+}
+
+.upload-button:hover,
+.file-input-label:hover {
+  filter: brightness(1.1);
+}
+
+.selected-file-name {
+
+  display: flex;
+  align-items: center;
+  margin-right: 50px;
+  font-size: 0.8em;
+  opacity: 0.7;
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: 200px; /* adjust to your needs */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
+  max-width: 200px;
+  margin-left: 5px;
+}
+
+.upload-area {
+  display: flex;
+  flex-direction: column; /* Stacks elements vertically */
+  align-items: center;
+  justify-content: center;
+}

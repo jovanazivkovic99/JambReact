@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { MaterialReactTable } from "material-react-table";
 import { Box } from "@mui/material";
-import UploadButton from "./UploadButton";
+import UploadButton from "./UploadButton/UploadButton";
+import CalculateButton from "./CalculateButton/CalculateButton";
 import axios from "axios";
 
 const ParentComponent = () => {
@@ -61,10 +62,11 @@ const ParentComponent = () => {
   const handleFileSelected = (file) => {
     setSelectedFile(file);
   };
-
+ 
   return (
     <>
-      <Box padding="1em">
+    <UploadButton onFileSelected={handleFileSelected} />
+    <Box paddingX="5em" style={{ maxHeight: "100vh", overflowY: "auto" }}>
         <MaterialReactTable
           columns={columns}
           data={tableData}
@@ -78,28 +80,32 @@ const ParentComponent = () => {
           muiTableProps={{
             sx: {
               maxWidth: "100%", // restrict table width to 100% of its container
-              overflowX: "auto", // allow scrolling if the table's width exceeds its container's width
-              border: "1px solid rgba(81, 81, 81, 1)",
+              maxHeight: "500px", // Adjust this value as needed
+              overflowX: "auto", // allow horizontal scrolling if the table's width exceeds its container's width
+              overflowY: "auto", // allow vertical scrolling if the table's height exceeds its container's height
+              border: "0.5px solid rgba(81, 81, 81, 0.5)",
             },
           }}
+          
           muiTableHeadCellProps={{
             sx: {
-              minWidth: "30px", // Adjust as needed
-              maxWidth: "150px", // Adjust as needed
-              border: "1px solid rgba(81, 81, 81, 1)",
+                display: 'none'
             },
           }}
           muiTableBodyCellProps={{
             sx: {
               minWidth: "30px", // Adjust as needed
-              maxWidth: "150px", // Adjust as needed
-              padding: "0.5em",
-              border: "1px solid rgba(81, 81, 81, 1)",
+              maxWidth: "100px", // Adjust as needed
+              padding: "0.4em",
+              border: "0.5px solid rgba(81, 81, 81, 0.5)",
+              bgcolor:"#fcf5c7",
+              textAlign:"center"
             },
           }}
         />
       </Box>
-      <UploadButton onFileSelected={handleFileSelected} />
+      <CalculateButton template={tableData} />
+
     </>
   );
 };

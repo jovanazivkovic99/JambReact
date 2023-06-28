@@ -1,0 +1,40 @@
+.calculate-button-container {
+  display: flex;
+  align-items: center; /* Add this line */
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.calculate-button {
+  display: inline-block;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: #85d2d0;
+  text-align: center;
+  padding: 10px 15px;
+  letter-spacing: 1.5px;
+  user-select: none;
+  cursor: pointer;
+  box-shadow: 5px 15px 25px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  margin-right: 10px;
+  margin-bottom: 0px;
+  border: none;
+  width: 120px; /* Change flex-basis to width */
+  font-size: 0.8em; /* Make the font size the same */
+  font-weight: 400; /* Make the font weight the same */
+}
+
+.calculate-button:hover {
+  filter: brightness(1.1);
+}
+
+.sum-text {
+  font-size: 1.2em; /* adjust as needed */
+  color: #333; /* adjust as needed */
+  font-weight: bold; /* adjust as needed */
+  font-family: "Poppins", sans-serif; /* adjust as needed */
+  margin-left: 10px; /* adjust as needed */
+}
+

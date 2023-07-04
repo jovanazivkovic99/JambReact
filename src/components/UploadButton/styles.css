@@ -16,7 +16,7 @@ input[type="file"] {
   display: inline-block;
   text-transform: uppercase;
   color: #fff;
-  background-color: rgba(170, 150, 218, 1);
+  background-color: #7acfd6;
   text-align: center;
   padding: 10px 15px;
   letter-spacing: 1.5px;
@@ -28,7 +28,7 @@ input[type="file"] {
   margin-top: 30px;
   border: none;
   flex-basis: 120px;
-  font-size: 0.8em; /* Make the font size the same */
+  font-size: 0.9em; /* Make the font size the same */
   font-weight: 400; /* Make the font weight the same */
   width: 120px;  /* adjust as needed */
   margin: 0;

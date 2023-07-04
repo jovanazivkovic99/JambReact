@@ -2,7 +2,7 @@
   display: flex;
   align-items: center; /* Add this line */
   justify-content: center;
-  margin-top: 30px;
+  flex-wrap: nowrap;
   margin-bottom: 10px;
 }
 
@@ -10,7 +10,7 @@
   display: inline-block;
   text-transform: uppercase;
   color: #fff;
-  background-color: #85d2d0;
+  background-color: #7acfd6;
   text-align: center;
   padding: 10px 15px;
   letter-spacing: 1.5px;
@@ -21,9 +21,13 @@
   margin-right: 10px;
   margin-bottom: 0px;
   border: none;
-  width: 120px; /* Change flex-basis to width */
-  font-size: 0.8em; /* Make the font size the same */
+  flex-basis: 120px;
+  font-size: 0.9em;
   font-weight: 400; /* Make the font weight the same */
+  width: 120px; /* Change flex-basis to width */
+   /* Make the font size the same */
+   margin: 0;
+ 
 }
 
 .calculate-button:hover {
@@ -31,7 +35,7 @@
 }
 
 .sum-text {
-  font-size: 1.2em; /* adjust as needed */
+  
   color: #333; /* adjust as needed */
   font-weight: bold; /* adjust as needed */
   font-family: "Poppins", sans-serif; /* adjust as needed */

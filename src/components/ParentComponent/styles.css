@@ -1,0 +1,23 @@
+.responsive-table {
+    width: 100%;
+  }
+  
+  .responsive-table .rt-table {
+    width: 100%;
+  }
+  
+  .responsive-table .rt-thead.-header {
+    display: none;
+  }
+  
+  .responsive-table .rt-tbody .rt-tr {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .responsive-table .rt-tbody .rt-td {
+    flex: 1 0 25%;
+    max-width: 25%;
+  }
+  

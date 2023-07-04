@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { MaterialReactTable } from "material-react-table";
 import { Box } from "@mui/material";
-import UploadButton from "./UploadButton/UploadButton";
-import CalculateButton from "./CalculateButton/CalculateButton";
+import UploadButton from "../UploadButton/UploadButton";
+import CalculateButton from "../CalculateButton/CalculateButton";
 import axios from "axios";
+import styled from "@emotion/styled";
 
 const ParentComponent = () => {
   const [tableData, setTableData] = useState([]);
   const [columns, setColumns] = useState([]);
   const [selectedFile, setSelectedFile] = useState(null);
-
 
   useEffect(() => {
     const fetchTableData = async () => {
@@ -66,20 +66,24 @@ const ParentComponent = () => {
     setSelectedFile(file);
   };
 
+  const MaterialReactTableBox = styled(Box)`
+    max-width: max-content;
+  `;
+
   return (
     <>
       <UploadButton onFileSelected={handleFileSelected} />
-      <Box
-       display="flex"
-       justifyContent="center"
-       alignItems="center"
-       marginX="auto"
-       style={{
-         maxHeight: "100vh",
-         overflowY: "auto",
-         maxWidth: "100vh",
-       }}
-      >
+      {/* <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        marginX="auto"
+        style={{
+          maxHeight: "100vh",
+          maxWidth: "50%",
+        }}
+      >  */}
+      <MaterialReactTableBox>
         <MaterialReactTable
           columns={columns}
           data={tableData.map((row) => row.map((cell) => cell.value))} // convert each cell object into its value for the table
@@ -90,12 +94,12 @@ const ParentComponent = () => {
           enableBottomToolbar={false}
           enableTopToolbar={false}
           muiTableBodyRowProps={{ hover: false }}
+          enableColumnResizing
           muiTableProps={{
             sx: {
-              maxWidth: "100%",
-              maxHeight: "400px",
-              height: "10px",
               border: "0.5px solid rgba(81, 81, 81, 0.5)",
+              overflowX: "auto",
+              maxWidth: "100%",
             },
           }}
           muiTableHeadCellProps={{
@@ -111,14 +115,13 @@ const ParentComponent = () => {
             return {
               align: "center",
               sx: {
-                minWidth: "50px",
-               // maxWidth: "100px",
                 padding: "0.4em",
                 border: "0.5px solid rgba(81, 81, 81, 0.5)",
                 bgcolor: cellIsValid ? "#ffffff" : "#fea49f",
                 textAlign: "center",
-                width:"0.1%",
-                whiteSpace: "nowrap",
+                whiteSpace: "normal",
+                overflow: "visible",
+                overflowWrap: "break-word", // This line was added
               },
             };
           }}
@@ -133,7 +136,7 @@ const ParentComponent = () => {
               InputProps: {
                 style: {
                   height: "25px",
-                  padding: "10px"
+                  padding: "10px",
                 },
               },
             };
@@ -167,8 +170,8 @@ const ParentComponent = () => {
             };
           }}
         />
-      </Box>
-    
+      </MaterialReactTableBox>
+      {/* </Box> */}
       <CalculateButton template={tableData} />
     </>
   );

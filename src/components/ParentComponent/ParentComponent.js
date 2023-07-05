@@ -5,15 +5,18 @@ import UploadButton from "../UploadButton/UploadButton";
 import CalculateButton from "../CalculateButton/CalculateButton";
 import axios from "axios";
 import styled from "@emotion/styled";
+//import { Loader } from "@mantine/core";
 
 const ParentComponent = () => {
   const [tableData, setTableData] = useState([]);
   const [columns, setColumns] = useState([]);
   const [selectedFile, setSelectedFile] = useState(null);
+  const [isLoading, setIsLoading] = useState(false); // add this line
 
   useEffect(() => {
     const fetchTableData = async () => {
       try {
+        setIsLoading(true); // set loading state to true
         const formData = new FormData();
         formData.append("image", selectedFile);
 
@@ -51,6 +54,9 @@ const ParentComponent = () => {
       } catch (error) {
         console.error("Error uploading image or fetching table data: ", error);
       }
+      finally {
+        setIsLoading(false); // set loading state to false in the finally block
+      }
     };
 
     if (selectedFile) {
@@ -86,6 +92,9 @@ const ParentComponent = () => {
         }}
       >  */}
       <MaterialReactTableBox>
+      {/* {isLoading ? (
+          <Loader /> // Show loader if isLoading is true
+        ) : ( */}
         <MaterialReactTable
           columns={columns}
           data={tableData.map((row) => row.map((cell) => cell.value))} // convert each cell object into its value for the table
@@ -96,6 +105,7 @@ const ParentComponent = () => {
           enableBottomToolbar={false}
           enableTopToolbar={false}
           muiTableBodyRowProps={{ hover: false }}
+          state={{ isLoading }} // add this line
           enableColumnResizing
           muiTableProps={{
             sx: {
@@ -165,7 +175,9 @@ const ParentComponent = () => {
               }
             };
           }}
+
         />
+        {/* )} */}
       </MaterialReactTableBox>
       {/* </Box> */}
       <CalculateButton template={tableData} />

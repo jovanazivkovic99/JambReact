@@ -3,13 +3,20 @@ import Title from "../title/Title";
 import "./styles.css";
 
 const UploadButton = ({ onFileSelected }) => {
+  const [selectedFile, setSelectedFile] = useState(null); // State to store the selected file
   const [selectedFileName, setSelectedFileName] = useState(""); // State to store the selected file name
 
-  const fileSelectedHandler = (event) => {
+  const fileChosenHandler = (event) => {
     if (event.target && event.target.files && event.target.files.length > 0) {
       const file = event.target.files[0];
-      onFileSelected(file);
+      setSelectedFile(file); // Store the file
       setSelectedFileName(file.name); // Set the selected file name
+    }
+  };
+
+  const fileUploadHandler = () => {
+    if (selectedFile) {
+      onFileSelected(selectedFile); // Upload the stored file
     }
   };
 
@@ -21,15 +28,14 @@ const UploadButton = ({ onFileSelected }) => {
           Choose Image
         </label>
         <span className="selected-file-name">{selectedFileName}</span>{" "}
-        {/* Display the selected file name */}
         <input
           id="file"
           type="file"
           name="file"
           className="inputfile"
-          onChange={fileSelectedHandler}
+          onChange={fileChosenHandler}
         />
-        <button className="upload-button" onClick={fileSelectedHandler}>
+        <button className="upload-button" onClick={fileUploadHandler}>
           Upload
         </button>
       </div>

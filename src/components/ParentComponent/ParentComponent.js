@@ -70,6 +70,8 @@ const ParentComponent = () => {
     max-width: max-content;
   `;
 
+  let updatedTableData = [...tableData];
+
   return (
     <>
       <UploadButton onFileSelected={handleFileSelected} />
@@ -149,24 +151,18 @@ const ParentComponent = () => {
             }
 
             return {
+              // onChange i onBlur - mora oba da ima. prebacila sam setTableData(updatedTableData);
+              // iz onChange u onBlur jer je pre toga cim promenim vrednost u celiji gubio fokus
+              // i svaki put za svaku cifru mora opet da se klikne na celiju kako bi se unela
               ...commonProps,
-              onBlur: (event) => {
-                console.log("event: " + event + "cell: " + cell);
+              onChange: (event) => {
                 const updatedTableData = [...tableData];
                 updatedTableData[cell.row.index][cell.column.id].value =
                   event.target.value;
-                setTableData(updatedTableData);
-                console.log(
-                  "table: " +
-                    tableData +
-                    "; updated table: " +
-                    updatedTableData +
-                    "; updated cell: " +
-                    updatedTableData[cell.row.index][cell.column.id].value +
-                    "; value to update: " +
-                    event.target.value
-                );
               },
+              onBlur: () => {
+                setTableData(updatedTableData);
+              }
             };
           }}
         />

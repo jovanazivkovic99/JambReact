@@ -34,11 +34,21 @@
   filter: brightness(1.1);
 }
 
+.calculate-button:active
+ {
+  background-color: #5ca9b7;
+}
+
 .sum-text {
   
   color: #333; /* adjust as needed */
   font-weight: bold; /* adjust as needed */
   font-family: "Poppins", sans-serif; /* adjust as needed */
-  margin-left: 10px; /* adjust as needed */
+  margin-left: 10px;
 }
 
+.sum-text .sum-value {
+  margin-left: 10px; /* adjust as needed */
+  min-width: 50px; /* adjust as needed */
+  display: inline-block;
+}
